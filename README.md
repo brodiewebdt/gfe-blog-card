@@ -1,2 +1,3 @@
-# gfe-blog-card
-GreatFrontEnd Blog Card challenge
+# sb-landing-page
+Start Bootstrap Landing page clone from scratch.
+HTML, CSS and JS only. No Bootstrap.
