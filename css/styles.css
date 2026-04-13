@@ -20,6 +20,24 @@
       src: url('../assets/fonts/noto-sans-v42-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
     }
 
+    /* noto-sans-regular - latin */
+    @font-face {
+      font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+      font-family: 'Noto Sans';
+      font-style: normal;
+      font-weight: 400;
+      src: url('../assets/fonts/noto-sans-v42-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    }
+
+    /* noto-sans-600 - latin */
+    @font-face {
+      font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+      font-family: 'Noto Sans';
+      font-style: normal;
+      font-weight: 600;
+      src: url('../assets/fonts/noto-sans-v42-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    }
+
     /* noto-sans-700 - latin */
     @font-face {
       font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -35,7 +53,7 @@
     --c-green-50: hsl(138 76% 97%);
     --c-green-200: hsl(141 79% 85%);
     --c-green-700: hsl(142 72% 29%);
-    --c-indigo-700: hsl(245 58% 51%);
+    --c-indigo-700: #463acb;
     /* Neutral Colors */
     --c-neutral-100: hsl(0 0% 100%);
     --c-neutral-200: hsl(210 20% 98%);
@@ -47,7 +65,7 @@
     --color-text-dark: var(--c-neutral-900);
 
     --color-card-bg: var(--c-neutral-100);
-    --color-body-bg: linear-gradient(45deg, var(--c-neutral-200) 0%, var(--c-neutral-400) 100%);
+    --color-body-bg: linear-gradient(to bottom, var(--c-neutral-200) 0%, var(--c-neutral-400) 100%);
 
     /* Font Sizes */
     --fs-14: calc(14 / 16 * 1rem);
@@ -72,8 +90,11 @@
   }
 
   body {
+    background: var(--color-body-bg);
+    color: var(--color-text-base);
     font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
     line-height: 1.5;
+    min-height: 100dvh;
   }
 
   img,
@@ -109,6 +130,65 @@
 }
 
 @layer components {
+  .blog-card {
+    background-color: var(--color-card-bg);
+    border-radius: 8px;
+    box-shadow:
+      0px 1px 2px 0 rgb(0 0 0 / 0.06),
+      0px 1px 3px 0 rgb(0 0 0 / 0.1);
+    max-width: calc(340 / 16 * 1rem);
+    margin-inline: auto;
+    margin-block-start: calc(120 / 16 * 1rem);
+    overflow: hidden;
+
+    .blog-card__image {
+      height: calc(288 / 16 * 1rem);
+
+      & img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .blog-card__text {
+      padding: calc(24 / 16 * 1rem) calc(16 / 16 * 1rem);
+    }
+
+    .blog-card__tag {
+      background-color: var(--c-green-50);
+      border: 1px solid var(--c-green-200);
+      border-radius: 100vw;
+      color: var(--c-green-700);
+      font-size: var(--font-size-small);
+      line-height: 1.43;
+      padding: 2px 8px;
+    }
+    .blog-card__title {
+      color: var(--color-text-dark);
+      font-size: var(--font-size-large);
+      font-weight: 600;
+      line-height: 1.55;
+      margin-block: 8px 12px;
+    }
+    .blog-card__excerpt {
+      font-weight: 500;
+      margin-block-end: 24px;
+    }
+    .blog-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--c-indigo-700);
+      font-weight: 500;
+      line-height: 1.5;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 @layer utilities {
